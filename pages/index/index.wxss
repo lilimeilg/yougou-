@@ -8,3 +8,27 @@
   flex: 1;
   padding: 30rpx;
 }
+.index_floor .floor_item .floor_title {
+  padding: 10rpx 0;
+}
+.index_floor .floor_item .floor_list {
+  overflow: hidden;
+  padding: 0 10rpx;
+}
+.index_floor .floor_item .floor_list .goods_item {
+  width: 33.33%;
+  float: left;
+  /* 后两个超链接 */
+}
+.index_floor .floor_item .floor_list .goods_item:nth-last-child(-n + 4) {
+  /* 让图片的宽度和高度 100%  */
+  height: 207.97413793rpx;
+  border-left: 10rpx solid #fff;
+}
+.index_floor .floor_item .floor_list .goods_item:nth-last-child(-n + 4) image {
+  height: 100%;
+  background-color: red;
+}
+.index_floor .floor_item .floor_list .goods_item:nth-last-child(-n+2) {
+  border-top: 10rpx solid #fff;
+}

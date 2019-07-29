@@ -23,3 +23,18 @@
     </navigator>
 </view>
 <!-- 导航分类结束 -->
+<!-- 楼层分类数据开始 -->
+<view class="index_floor">
+    <view class="floor_item" wx:for="{{floorList}}" wx:key="name" wx:for-item="item1" wx:for:index="index1">
+        <view class="floor_title">
+            <image src="{{item1.floor_title.image_src}}" mode="widthFix"  />
+        </view>
+        <view class="floor_list">
+ <navigator class="goods_item" wx:for="{{item1.product_list}}" wx:key="name" wx:for-item="item2" wx:for-index="index2">
+     <!-- 第一张图片的mode值设为widthFix宽度不变，高度自动变化，保持原图宽高比不变，其余的设为scaleToFill不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素 -->
+     <image src="{{item2.image_src}}"  mode="{{index2===0?'widthFix':'scaleToFill'}}" />
+ </navigator>
+        </view>
+    </view>
+</view>
+<!-- 楼层分类数据结束-->
