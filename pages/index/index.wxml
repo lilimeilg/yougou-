@@ -1,0 +1,25 @@
+<!-- 引入搜索框组件 -->
+<searchInput></searchInput>
+<!-- 轮播图开始 -->
+<view class="index_swiper">
+    <swiper indicator-dots autoplay circular interval="1500">
+        <!-- 原图片的高度为750*340，
+        swiper的默认宽高是100%*150
+        image的默认宽高是100%*240
+        所以要调整image的高度
+        widthFix 宽度不变，高度自动变化，保持原图宽高比不变 -->
+    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+       <navigator >
+          <image src="{{item.image_src}}" mode="widthFix"></image>
+       </navigator>
+    </swiper-item>
+</swiper>
+</view>
+<!-- 轮播图结束 -->
+<!-- 导航分类开始 -->
+<view class="index_nav_cate">
+    <navigator wx:for="{{navCatList}}" wx:key="name" url="{{item.navigator_url}}"  open-type="{{item.open_type}}">
+        <image src="{{item.image_src}}" mode="widthFix" />
+    </navigator>
+</view>
+<!-- 导航分类结束 -->
