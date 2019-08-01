@@ -43,7 +43,7 @@ Page({
   // 获取楼层数据
 getFloorList(){
 request({url:"/home/floordata"}).then(result=>{
-  console.log(result);
+  // console.log(result);
   this.setData({
     floorList:result
   })
