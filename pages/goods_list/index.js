@@ -54,9 +54,13 @@ getGoodsList(){
       // 为了做加载下一页，返回值改成数据拼接
       goodsList:[...this.data.goodsList,...res.goods]
     })
+    // 关闭下拉刷新的窗口。 页面一加载的时候就有调用，下拉刷新没有打开也可以关闭
+   wx.stopPullDownRefresh()
+      
   })
 },
 // 微信内置的滚动条触底，上拉加载下一页的事件.小程序的页面生命周期函数
+// 滚动条触底事件
 onReachBottom(){
   // 先判断是否有下一页数据
   if(this.QueryParams.pagenum>=this.TotalPages){
@@ -73,6 +77,14 @@ onReachBottom(){
     this.QueryParams.pagenum++
     this.getGoodsList()
   }
+},
+//  下拉刷新事件 需要在json文件中设置"enablePullDownRefresh":true 允许下拉刷新
+onPullDownRefresh(){
+  // 重置页码，重置data的数组，重新发送请求
+  this.QueryParams.pagenum=1
+  this.setData({
+    goodsList:[]
+  })
+  this.getGoodsList()
 }
-  
 })
