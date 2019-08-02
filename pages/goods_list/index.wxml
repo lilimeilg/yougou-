@@ -1,2 +1,11 @@
 <!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<searchInput></searchInput>
+<view >
+    <Tabs bindtitleChange="handleTitleChange" tabs="{{tabs}}" >
+    <!--插槽  -->
+     <block wx:if="{{tabs[0].isActive}}">0</block>
+  <block wx:elif="{{tabs[1].isActive}}">1-正在开发中。。。。</block>
+  <block wx:elif="{{tabs[2].isActive}}">2-正在开发中。。。。</block>
+    </Tabs>
+</view>
+  
