@@ -14,53 +14,35 @@ Page({
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+// 获取收货地址
+//   handleChooseAddress(){
+// //  1.获取用户对小程序的授权信息
+// wx.getSetting({
+//   success:(res1)=>{
+//     // 成功获取了用户的收取信息
+//     const scopeAddress=res1.authSetting['scope.address']
+//     // 用户授权过或者从未调用过收货地址
+//     if(scopeAddress===true||scopeAddress===undefined){
+//       // 调用收货地址
+//       wx.chooseAddress({
+//      success:(res2)=>{
+//        console.log(res2);
+//      }
+//       })
+//     }else{
+//       // 用户曾经拒绝授权获取收货地址
+//       wx.openSetting({
+//         success:()=>{
+//           // 再次调用收获地址
+//           wx.chooseAddress({
+//             success:(res3)=>{
+//               console.log(res3);
+//             }
+//           })
+//         }
+//       })
+//     }
+//   }
+// })
+// }
 })
