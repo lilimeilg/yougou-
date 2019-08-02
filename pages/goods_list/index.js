@@ -1,5 +1,5 @@
 // pages/goods_list/index.js
-import {request} from "../../request/index"
+import { request } from "../../request/index.js";
 Page({
 
   /**
@@ -46,11 +46,33 @@ handleTitleChange(e){
 },
 getGoodsList(){
   request({url:"/goods/search",data:this.QueryParams}).then(res=>{
-    console.log(res);
+    // console.log(res);
+    // 计算总页数 总条数/每页显示条数再向上取整
+    this.TotalPages=Math.ceil(res.total/this.QueryParams.pagesize)
+
     this.setData({
-      goodsList:res.goods
+      // 为了做加载下一页，返回值改成数据拼接
+      goodsList:[...this.data.goodsList,...res.goods]
     })
   })
+},
+// 微信内置的滚动条触底，上拉加载下一页的事件.小程序的页面生命周期函数
+onReachBottom(){
+  // 先判断是否有下一页数据
+  if(this.QueryParams.pagenum>=this.TotalPages){
+    // 提示没有下一页数据了
+   wx.showToast({
+      title: '已经没有下一页的数据了哦',
+      icon: 'none',
+     
+    });
+      
+  }else{
+    // 加载下一页的数据   不能再对goodsList 全部替换    对旧的数组进行拼接 
+    // console.log("正在加载下一页的数据");
+    this.QueryParams.pagenum++
+    this.getGoodsList()
+  }
 }
   
 })
