@@ -1,4 +1,7 @@
 /* pages/goods_detail/index.wxss */
+page {
+  padding-bottom: 90rpx;
+}
 .detail_swiper swiper {
   /* 
       原图的宽 / 原图的高 =变化后的图片的宽度 / 高度
@@ -48,4 +51,33 @@
   font-size: 40rpx;
   font-weight: 600;
   border-bottom: 5rpx solid #ccc;
+}
+.btm_tool {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 90rpx;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-top: 1rpx solid #dedede;
+}
+.btm_tool .tool_item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btm_tool .btn_cart {
+  flex: 2;
+  background-color: orange;
+  color: #fff;
+  font-size: 34rpx;
+}
+.btm_tool .btn_buy {
+  flex: 2;
+  background-color: orangered;
+  color: #fff;
+  font-size: 34rpx;
 }

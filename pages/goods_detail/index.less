@@ -1,4 +1,7 @@
 /* pages/goods_detail/index.wxss */
+page {
+  padding-bottom: 90rpx;//给底部设置padding，不让底部工具栏挡住详情内容
+}
 .detail_swiper {
     swiper {
       /* 
@@ -58,3 +61,34 @@
     }
   
   } 
+  .btm_tool{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 90rpx;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-top: 1rpx solid #dedede;
+    .tool_item{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn_cart{
+      flex: 2;
+      background-color: orange;
+      color: #fff;
+      font-size: 34rpx;
+    }
+    .btn_buy{
+  
+      flex: 2;
+      background-color: orangered;
+      color: #fff;
+      font-size: 34rpx;
+  
+    }
+  }
