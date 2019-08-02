@@ -1,7 +1,7 @@
 /**
  * 获取商品的分类数据
  */
-export const getStorage=()=>{
+export const getStorageCates=()=>{
     return wx.getStorageSync("cates")
 }
 /**

@@ -6,7 +6,7 @@
         <!-- 综合 -->
         <block wx:if="{{tabs[0].isActive}}">
             <view class="first_tab">
-                <navigator class="goods_group"wx:for="{{goodsList}}" wx:key="goods_id">
+                <navigator class="goods_group"wx:for="{{goodsList}}" wx:key="goods_id"  url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
                     <!-- 左侧图片 -->
                     <view class="goods_img_wrap">
                     <!-- 给图片一个默认途径，如果没有图片的话就加载默认图片 -->

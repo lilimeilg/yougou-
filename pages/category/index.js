@@ -82,7 +82,7 @@ Page({
     // 给全局参数 赋值
     this.Cates = result;
     // 把接口的数据存入到本地存储中
-    setStorageCates("cates", { time: Date.now(), data: this.Cates });
+    setStorageCates({ time: Date.now(), data: this.Cates });
     // map 返回新数组
     let leftMenuList = this.Cates.map((v, i) => ({
       cat_name: v.cat_name,
@@ -99,7 +99,8 @@ Page({
   handleMenuChange(e) {
     // console.log(e);
     const { index } = e.currentTarget.dataset;
-    let rightGoodsList = this.cates[index].children;
+    // console.log(index);
+    let rightGoodsList = this.Cates[index].children;
     this.setData({
       currentIndex: index,
       rightGoodsList,
