@@ -1,5 +1,7 @@
 // pages/category/index.js
 import { request } from "../../request/index.js";
+// 让小程序中支持es7的async语法
+import regeneratorRuntime from '../../lib/runtime/runtime'
 Page({
   /**
    * 页面的初始数据
@@ -51,26 +53,43 @@ Page({
     }
   },
   // 获取分类数据
-  getCatList() {
-    request({ url: "/categories" }).then(result => {
-      // console.log(result);
-      // 给全局变量赋值
-      this.Cates = result;
-      // 数组过滤，只留下分类名称和id
-      // 把接口的数据存入到本地存储中,data就是存储的数据，就是返回值
-      wx.setStorageSync("cates",{time:Date.now(),data:this.Cates})
+  // getCatList() {
+  //   request({ url: "/categories" }).then(result => {
+  //     // console.log(result);
+  //     // 给全局变量赋值
+  //     this.Cates = result;
+  //     // 数组过滤，只留下分类名称和id
+  //     // 把接口的数据存入到本地存储中,data就是存储的数据，就是返回值
+  //     wx.setStorageSync("cates",{time:Date.now(),data:this.Cates})
     
-      let leftMenuList = this.Cates.map((v, i) => ({
-        cat_name: v.cat_name,
-        cat_id: v.cat_id
-      }));
-      let rightGoodsList = this.Cates[0].children;
-      // console.log(rightGoodsList);
-      this.setData({
-        leftMenuList,
-        rightGoodsList
-      });
-    });
+  //     let leftMenuList = this.Cates.map((v, i) => ({
+  //       cat_name: v.cat_name,
+  //       cat_id: v.cat_id
+  //     }));
+  //     let rightGoodsList = this.Cates[0].children;
+  //     // console.log(rightGoodsList);
+  //     this.setData({
+  //       leftMenuList,
+  //       rightGoodsList
+  //     });
+  //   });
+  // },
+  // 使用async获取分类数据
+  async getCatList() {
+    // 发送请求并接收返回值
+ const result =await request({url: "/categories"})
+ // 给全局参数 赋值
+ this.Cates = result;
+ // 把接口的数据存入到本地存储中 
+ wx.setStorageSync("cates", { time: Date.now(), data: this.Cates });
+ // map 返回新数组  
+ let leftMenuList = this.Cates.map((v, i) => ({ cat_name: v.cat_name, cat_id: v.cat_id }));
+
+ let rightGoodsList = this.Cates[0].children;
+ this.setData({
+   leftMenuList,
+   rightGoodsList
+ })
   },
   // 左侧菜单的点击激活选中事件
   handleMenuChange(e) {

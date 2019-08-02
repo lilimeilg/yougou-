@@ -1,5 +1,7 @@
 // pages/goods_list/index.js
 import { request } from "../../request/index.js";
+// 让小程序中支持es7的async语法
+import regeneratorRuntime from '../../lib/runtime/runtime'
 Page({
 
   /**
@@ -44,20 +46,32 @@ handleTitleChange(e){
   // 修改了data需要重新赋值
   this.setData({tabs})
 },
-getGoodsList(){
-  request({url:"/goods/search",data:this.QueryParams}).then(res=>{
-    // console.log(res);
-    // 计算总页数 总条数/每页显示条数再向上取整
-    this.TotalPages=Math.ceil(res.total/this.QueryParams.pagesize)
+// getGoodsList(){
+//   request({url:"/goods/search",data:this.QueryParams}).then(res=>{
+//     // console.log(res);
+//     // 计算总页数 总条数/每页显示条数再向上取整
+//     this.TotalPages=Math.ceil(res.total/this.QueryParams.pagesize)
 
-    this.setData({
-      // 为了做加载下一页，返回值改成数据拼接
-      goodsList:[...this.data.goodsList,...res.goods]
-    })
-    // 关闭下拉刷新的窗口。 页面一加载的时候就有调用，下拉刷新没有打开也可以关闭
-   wx.stopPullDownRefresh()
+//     this.setData({
+//       // 为了做加载下一页，返回值改成数据拼接
+//       goodsList:[...this.data.goodsList,...res.goods]
+//     })
+//     // 关闭下拉刷新的窗口。 页面一加载的时候就有调用，下拉刷新没有打开也可以关闭
+//    wx.stopPullDownRefresh()
       
-  })
+//   })
+// },
+async getGoodsList(){
+  const res= await request({url:"/goods/search",data:this.QueryParams})
+  this.TotalPages=Math.ceil(res.total/this.QueryParams.pagesize)
+
+      this.setData({
+        // 为了做加载下一页，返回值改成数据拼接
+        goodsList:[...this.data.goodsList,...res.goods]
+      })
+      // 关闭下拉刷新的窗口。 页面一加载的时候就有调用，下拉刷新没有打开也可以关闭
+     wx.stopPullDownRefresh()
+
 },
 // 微信内置的滚动条触底，上拉加载下一页的事件.小程序的页面生命周期函数
 // 滚动条触底事件
