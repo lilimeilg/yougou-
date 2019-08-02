@@ -27,7 +27,6 @@
 }
 .index_floor .floor_item .floor_list .goods_item:nth-last-child(-n + 4) image {
   height: 100%;
-  background-color: red;
 }
 .index_floor .floor_item .floor_list .goods_item:nth-last-child(-n+2) {
   border-top: 10rpx solid #fff;
